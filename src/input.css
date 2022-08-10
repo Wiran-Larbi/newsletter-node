@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header{
+    @apply text-slate-600 font-sans font-semibold;
+}

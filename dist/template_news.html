@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--!----------  Styles  ------------->
+    <link rel="stylesheet" href="CSS/output.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <!-- font-family: 'Abril Fatface', cursive; -->
+    <!-- font-family: 'Lora', serif; -->
+
+    <title>NewsLetter</title>
+</head>
+    <style>
+        *,*::before,*::after{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+     
+        body{
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            padding: 8px 24px 0px;
+            scroll-behavior: smooth;            
+
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+          }
+          
+          /* Track */
+          ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px rgba(128, 128, 128,.18);
+            border-radius: 120px;
+          }
+          
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background: rgba(0, 128, 128,.25);
+            border-radius: 100px;
+          }
+        #navbar{
+            border-bottom: 1px solid #ededed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 5rem;
+            margin-bottom: 24px;
+            filter: drop-shadow(10px 20px 12px hsla(0, 0%, 0%, .2));
+        }
+        #navbar .logo{
+            font-family: 'Abril Fatface', cursive;
+            font-size: 2rem;
+            cursor: pointer;
+          
+        }
+       
+        #navbar .navbar-indicator{
+            height: 100%;
+            font-family: 'Lora', serif;
+            font-size: .9rem;
+            text-transform: uppercase;
+            color: #a1a1a1;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 200ms ease-in;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        #navbar:hover .navbar-indicator{
+            transform: translateY(-8px);
+        }
+        #navbar:hover .navbar-indicator .double-arrow{
+             opacity: .9;
+        }
+        #navbar .navbar-indicator .double-arrow{
+            opacity: 0;
+            width: 12px;
+            height: auto;
+            text-align: center;
+            transition: all ease 300ms;
+        }
+        #about{
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: .9rem;
+            font-weight: 200;
+            color: #1a1a1a;
+        }
+        #about h4{
+            color: #1a1a1a;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        #about h4 span{
+            color: hsl(0, 0%, 43%);
+            font-family: 'Lora', serif;
+            font-weight: 800;
+            font-size: .95rem;
+            transition: all 200ms ease-in;
+            cursor: pointer;
+        }
+        #about h4 span:hover{
+            color: teal;
+        }
+        #about a{
+            display: inline-block;
+        }
+        .about-ico{
+            width: 18px;
+        }
+      
+        #news-container{
+            width: 100%;
+            max-width: 100%;
+            height: 76vh;
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+           
+        }
+        #left{
+            flex: 1 0 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .news-by{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+        }
+        .news-by img{
+            width: 32px;
+            height: auto;
+        }
+        .news-by span{
+            font-family: 'Lora', serif;
+            font-weight: 400;
+            font-size: .85rem;
+            color: #1a1a1a;
+        }
+        .news-by span a{
+            font-weight: 500;
+        }
+        .news-by span span{
+            margin-left: 4px;
+            font-size: .7rem;
+            color: teal;
+        }
+        .news-image{
+            display: flex;
+            justify-content: center;
+        }
+        .news-image img{
+           border-radius: 4px;
+           filter: drop-shadow(12px 8px 8px rgba(0,0,0,.2));
+           width: 96%;
+        }
+        .news-title{
+            width: 100%;
+            line-height: 38px;
+            display: flex;
+            justify-content: center;
+        }
+        .news-title h2{
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1ae1;
+        }
+        .news-source{
+            padding: 0 8px;
+        }
+        .news-source a{
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: teal;
+            text-decoration: underline teal ;
+        }
+        #right{
+            flex: 1 0 58%;
+        }
+        #right .news-description{
+            padding: 0 12px;
+            width: 100%;
+            height: 100%;
+            font-size: .98rem;
+            color: #1a1a1a;
+            line-height: 30px;
+            overflow-y: scroll;
+        }
+        #right .news-description::selection{
+            background-color: rgba(0, 128, 128,.4);
+            color: whitesmoke;
+        }
+        #right .news-description::first-letter{
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: 'Lora',serif;
+
+        }
+        @media screen and (max-width: 560px) {
+        #news-container{
+            flex-direction: column;
+            height: 100%;
+        }
+        #right .news-description{
+            overflow-y: visible;
+        }
+       }
+       @media screen and (max-width: 768px) and (min-width: 560px){
+        #news-container{
+            flex-direction: column;
+            height: 100%;
+        }
+        #right .news-description{
+            overflow-y: visible;
+        }
+       }
+
+    </style>
+   
+<body>
+
+      {%NAVBAR%}
+    <section id="news-container">
+          <div id="left">
+                 <div class="news-by">
+                    <img src="/dist/image/user.png" alt="person">
+                     <span>Writter. <a href="#">{%BY%}</a> <span>added : {%ADDED%} From: {%SOURCE%}</span></span>
+                 </div>
+                 <div class="news-image">
+                     <img src="/dist/image/{%IMAGE%}" alt="image">
+                 </div>
+                 <div class="news-title">
+                     <h2>{%TITLE%}</h2>
+                 </div>
+                 <div class="news-source">
+                   <a href="{%URL%}">visit source for more..</a> 
+                 </div>
+          </div>
+          <div id="right">
+                 <div class="news-description">
+                    {%DESCRIPTION%}
+                 </div>
+          </div>
+         
+    </section>
+    {%ABOUT%}
+</body>
+</html>
